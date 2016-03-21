@@ -1,0 +1,91 @@
+.back-img{
+    min-height: 100vh;
+    background: url('../images/index-bg.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.index-jumbotron{
+    background-color: #98dafc;
+    color:white;
+}
+
+.btn-theme{
+    color:#312c32;
+    background-color: transparent;
+    border-color: #312c32;
+    outline: none !important;
+}
+
+.btn-theme:hover{
+    color:white;
+    background-color: #312c32   ;
+    border-color:#312c32;
+    outline: none !important;
+
+}
+
+.btn-theme1{
+    color:white;
+    background-color: transparent;
+    border-color: white;
+    outline: none !important;
+}
+
+.btn-theme1:hover{
+    color:#98dafc;
+    background-color: white   ;
+    border-color:white;
+    outline: none !important;
+
+}
+
+.active-btn-theme1{
+    color:#98dafc !important;
+    background-color: white   !important;
+    border-color:white !important;
+    outline: none !important;
+
+}
+
+.form-box1{
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+}
+
+.form-box2{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+
+.cursor{
+    cursor: hand;
+    cursor: pointer;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.form-footer-heading{
+    margin: 5px 0;
+}
+
+.button-margin{
+    margin: 5px 0;
+}
+.angular-google-map-container{
+    height: 400px;
+}
+
+.readonly{
+    background-color: white !important;
+}
+
+.view{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hh">
+<head>
+    <% include ../partials/head %>
+    <title>Home Hunt - User Login</title>
+</head>
+<body class="container-fluid back-img" ng-controller="MainCtrl">
+
+
+
+
+
+<div class="container" style="background-color: white;min-height: 100vh;padding: 0 0;margin-bottom: -30px">
+    <div class="jumbotron index-jumbotron">
+        <h1>Home Hunt</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" >
+
+            <h2>User Login <small>Authenticate to access our services</small></h2>
+
+
+            <form name="loginForm" ng-submit="submitForm(loginForm)" novalidate ng-if="!success">
+
+
+                <!--Email field-->
+                <div class="row">
+
+                    <div class="form-group col-xs-12 " >
+
+                        <label class="control-label">Login Type </label><br>
+
+
+                        <label class="radio-inline"  style="font-weight: normal;font-size: medium">
+                            <input type="radio" name="login_type" id="inlineRadio1"  value="1" ng-model="model.loginType"  ng-focus="resetErrors(loginForm)" > Email
+                        </label>
+                        <label class="radio-inline"  style="font-weight: normal;font-size: medium">
+                            <input type="radio" name="login_type" id="inlineRadio2" value="2"  ng-model="model.loginType"  ng-focus="resetErrors(loginForm)"> Phone
+                        </label>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-show="model.loginType=='1'"  ng-class="{'has-error':loginForm.email.$invalid && loginForm.$submitted}">
+
+                        <label class="control-label">Email</label>
+
+
+                        <div class="input-group">
+
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email"  autocomplete="false"
+                                   placeholder="Email" ng-model="model.email" required ng-focus="resetErrors(loginForm)">
+                        </div>
+
+
+
+                        <div ng-messages="loginForm.email.$error" ng-if="loginForm.email.$invalid && loginForm.$submitted">
+                            <span ng-message="required" class="help-block">Email is required.</span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <!--Phone-->
+
+
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"   ng-show="model.loginType=='2'"  ng-class="{'has-error':loginForm.phone.$invalid && loginForm.$submitted}">
+
+                        <label class="control-label">Phone</label>
+
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+
+                            <input type="text" class="form-control" name="phone" autocomplete="false"
+                                   placeholder="Phone" ng-model="model.phone" required ng-pattern="/^[\d]{10,10}$/" ng-focus="resetErrors(loginForm)">
+                        </div>
+
+
+
+
+                        <div ng-messages="loginForm.phone.$error" ng-if="loginForm.phone.$invalid && loginForm.$submitted">
+                            <span ng-if="loginForm.phone.$error.required" ng-message="required" class="help-block">Phone is required.</span>
+                            <span ng-if="loginForm.phone.$error.pattern" ng-message="pattern" class="help-block">Phone number must be of 10 digits</span>
+
+                        </div>
+                    </div>
+
+                    <!--Password-->
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"     ng-class="{'has-error':loginForm.password.$invalid && loginForm.$submitted}">
+
+                        <label class="control-label">Password</label>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
+
+                            <input type="password" class="form-control" name="password" autocomplete="new-password"
+                                   placeholder="Password" ng-model="model.password" required  ng-focus="resetErrors(loginForm)">
+                        </div>
+
+
+
+
+                        <div ng-messages="loginForm.password.$error"  ng-if="loginForm.password.$invalid && loginForm.$submitted">
+                            <span ng-if="loginForm.password.$error.required" ng-message="required" class="help-block">Password is required.</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-xs-12">
+
+                        <div class="alert alert-danger" role="alert" ng-if="error">{{msg}}</div>
+
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+
+                        <button type="submit" class="btn btn-block btn-theme" ng-disabled="loginForm.$submitted">Submit</button>
+
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+
+                        <button type="button" class="btn btn-block btn-theme" ng-click="resetForm(loginForm)">Reset</button>
+
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-footer-heading" >
+
+                        <a class="btn btn-block btn-theme" href="/user/signup">Not a member yet?</a>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+<footer>
+    <% include ../partials/footer %>
+
+</footer>
+
+
+
+
+
+<script src="/js/user/login.js"></script>
+
+
+</body>
+</html>

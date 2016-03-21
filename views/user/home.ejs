@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hh">
+<head>
+    <% include ../partials/head %>
+    <script src="/bower_components/select2/dist/js/select2.min.js"></script>
+    <link href="/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
+    <title>Home Hunt - User</title>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".js-example-basic-single").select2();
+        });
+    </script>
+
+</head>
+<body class="container-fluid back-img" ng-controller="MainCtrl">
+
+
+
+
+
+<div class="container" style="background-color: white;min-height: 100vh;padding: 0 0;margin-bottom: -30px">
+    <div class="jumbotron index-jumbotron">
+        <h1>Home Hunt</h1>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <a  class="btn btn-lg btn-block  btn-theme1 active-btn-theme1 button-margin" href="/user/signup">Search</a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a  class="btn btn-lg btn-block  btn-theme1 button-margin" href="/user/signup">Messages</a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a  class="btn btn-lg btn-block  btn-theme1 button-margin" href="/user/signup">Settings</a>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <a  class="btn btn-lg btn-block  btn-theme1 button-margin" href="/user/signup">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" >
+
+
+            <div class="jumbotron index-jumbotron">
+                <div class="form-group col-xs-3" style="padding-right: 0 !important;">
+                    <select class="js-example-basic-single form-control">
+                        <option value="AL">Alabama</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-9" style="padding-left: 0 !important;">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
+</div>
+<footer>
+    <% include ../partials/footer %>
+
+</footer>
+
+
+
+
+
+<script src="/js/user/home.js"></script>
+
+
+</body>
+</html>

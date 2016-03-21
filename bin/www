@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var config = require('../config');
+var chalk = require('chalk');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+app.set('port', config[env].port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(app.get('port'));
+server.on('listening', onListening);
+
+
+
+
+
+
+function  onListening(){
+    console.log(chalk.yellow("Server running on port\t===============>\t"),chalk.black.bgYellow.bold(server.address().port));
+}
+
+

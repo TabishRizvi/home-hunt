@@ -1,0 +1,399 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Home Hunt",
+        "description": "This is API  documentation of home-hunt project\n"
+    },
+    "host": "home-hunt.tabishrizvi.com",
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "name",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "phone",
+                        "in": "formData",
+                        "description": "phone",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "profile_pic",
+                        "in": "formData",
+                        "description": "Profile picture",
+                        "type": "file",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User registered."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "409": {
+                        "description": "Email/Phone is already registered."
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "request body",
+                        "schema": {
+                            "$ref": "#/definitions/LoginSchema"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logged in successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid Email/Phone/Password"
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logged out successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/user/password/update": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "request body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PasswordUpdateSchema"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password  updated successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/user/profile/view": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile  retrieved successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/user/profile/update": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "request body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProfileUpdateSchema"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile  updated successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/user/profile-pic/view": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile pic retrieved successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/user/profile-pic/update": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "profile_pic",
+                        "in": "formData",
+                        "description": "profile picture",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Profile pic updated successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        },
+        "/common/places/autocomplete": {
+            "get": {
+                "tags": [
+                    "common"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "description": "OAuth token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "input",
+                        "in": "query",
+                        "description": "Search string",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_type",
+                        "in": "query",
+                        "description": "User type",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Nearby location - latitude",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "description": "Nearby location - longitude",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Predictions retrieved successfully."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "401": {
+                        "description": "Invalid access token"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LoginSchema": {
+            "type": "object",
+            "required": [
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProfileUpdateSchema": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "PasswordUpdateSchema": {
+            "type": "object",
+            "required": [
+                "old_password",
+                "new_password"
+            ],
+            "properties": {
+                "old_password": {
+                    "type": "string"
+                },
+                "new_password": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

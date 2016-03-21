@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="hh">
+<head>
+    <% include ../partials/head %>
+    <title>Home Hunt - User Signup</title>
+
+</head>
+<body class="container-fluid back-img" ng-controller="MainCtrl">
+
+
+
+
+
+    <div class="container" style="background-color: white;min-height: 100vh;padding: 0 0;margin-bottom: -30px">
+        <div class="jumbotron index-jumbotron">
+            <h1>Home Hunt</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1" >
+
+                <h2>User Sign Up <small>One step registration process</small></h2>
+
+
+                <form name="registerForm" ng-submit="submitForm(registerForm)" novalidate ng-if="!success">
+
+
+                    <!--Email field-->
+                    <div class="row">
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"  ng-class="{'has-error':registerForm.email.$invalid && registerForm.$submitted}">
+
+                        <label class="control-label">Email</label>
+
+
+                        <div class="input-group">
+
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" name="email"  autocomplete="false"
+                                   placeholder="Email" ng-model="model.email" required ng-focus="resetErrors(registerForm)">
+                        </div>
+
+
+
+                        <div ng-messages="registerForm.email.$error" ng-if="registerForm.email.$invalid && registerForm.$submitted">
+                            <span ng-message="required" class="help-block">Email is required.</span>
+                        </div>
+                    </div>
+
+
+                    <!--First name-->
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"   ng-class="{'has-error':registerForm.name.$invalid && registerForm.$submitted}">
+
+                        <label class="control-label">Name</label>
+
+
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+                            <input type="text" class="form-control" name="name"  autocomplete="false"
+                                   placeholder="Name" ng-model="model.name" required ng-pattern="/^[a-zA-Z]+$/" ng-focus="resetErrors(registerForm)">
+                        </div>
+
+
+                        <div ng-messages="registerForm.name.$error" ng-if="registerForm.name.$invalid && registerForm.$submitted">
+                            <span ng-if="registerForm.name.$error.required" ng-message="required" class="help-block">Name is required.</span>
+                            <span ng-if="registerForm.name.$error.pattern" ng-message="pattern" class="help-block">Name must consist of only letters.</span>
+                        </div>
+                    </div>
+
+
+
+
+                    <!--Phone-->
+
+
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"  ng-class="{'has-error':registerForm.phone.$invalid && registerForm.$submitted}">
+
+                        <label class="control-label">Phone</label>
+
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+
+                            <input type="text" class="form-control" name="phone" autocomplete="false"
+                                   placeholder="Phone" ng-model="model.phone" required ng-pattern="/^[\d]{10,10}$/" ng-focus="resetErrors(registerForm)">
+                        </div>
+
+
+
+
+                        <div ng-messages="registerForm.phone.$error" ng-if="registerForm.phone.$invalid && registerForm.$submitted">
+                            <span ng-if="registerForm.phone.$error.required" ng-message="required" class="help-block">Phone is required.</span>
+                            <span ng-if="registerForm.phone.$error.pattern" ng-message="pattern" class="help-block">Phone number must be of 10 digits</span>
+
+                        </div>
+                    </div>
+
+                    <!--Password-->
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6"     ng-class="{'has-error':registerForm.password.$invalid && registerForm.$submitted}">
+
+                        <label class="control-label">Password</label>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
+
+                            <input type="password" class="form-control" name="password" autocomplete="new-password"
+                                   placeholder="Password" ng-model="model.password" ng-minlength="6" required  ng-focus="resetErrors(registerForm)">
+                        </div>
+
+
+
+
+                        <div ng-messages="registerForm.password.$error"  ng-if="registerForm.password.$invalid && registerForm.$submitted">
+                            <span ng-if="registerForm.password.$error.required" ng-message="required" class="help-block">Password is required.</span>
+                            <span ng-if="registerForm.password.$error.minlength"  ng-message="minlength" class="help-block">Password must be of 6 characters</span>
+                        </div>
+
+                    </div>
+
+
+                        <div class="col-xs-12">
+
+                            <div class="alert alert-danger" role="alert" ng-if="error">{{msg}}</div>
+
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+
+                            <button type="submit" class="btn btn-block btn-theme" ng-disabled="registerForm.$submitted">Submit</button>
+
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3" >
+
+                            <button type="button" class="btn btn-block btn-theme" ng-click="resetForm(registerForm)">Reset</button>
+
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-footer-heading" >
+
+                            <a class="btn btn-block btn-theme" href="/user/login">Already a member?</a>
+
+
+                        </div>
+
+
+
+
+
+
+                        </div>
+
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <% include ../partials/footer %>
+
+    </footer>
+
+
+
+
+
+<script src="/js/user/signup.js"></script>
+
+
+</body>
+</html>
